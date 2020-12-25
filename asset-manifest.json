@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/pomodoro-prime/static/css/main.29e84b6e.chunk.css",
+    "main.js": "/pomodoro-prime/static/js/main.f540a176.chunk.js",
+    "main.js.map": "/pomodoro-prime/static/js/main.f540a176.chunk.js.map",
+    "runtime-main.js": "/pomodoro-prime/static/js/runtime-main.aa2725bc.js",
+    "runtime-main.js.map": "/pomodoro-prime/static/js/runtime-main.aa2725bc.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/pomodoro-prime/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.766704cd.chunk.js": "/pomodoro-prime/static/js/2.766704cd.chunk.js",
+    "static/js/2.766704cd.chunk.js.map": "/pomodoro-prime/static/js/2.766704cd.chunk.js.map",
+    "static/js/3.89b8b3db.chunk.js": "/pomodoro-prime/static/js/3.89b8b3db.chunk.js",
+    "static/js/3.89b8b3db.chunk.js.map": "/pomodoro-prime/static/js/3.89b8b3db.chunk.js.map",
+    "index.html": "/pomodoro-prime/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/pomodoro-prime/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.29e84b6e.chunk.css.map": "/pomodoro-prime/static/css/main.29e84b6e.chunk.css.map",
+    "static/js/2.766704cd.chunk.js.LICENSE.txt": "/pomodoro-prime/static/js/2.766704cd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aa2725bc.js",
+    "static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.766704cd.chunk.js",
+    "static/css/main.29e84b6e.chunk.css",
+    "static/js/main.f540a176.chunk.js"
+  ]
+}
