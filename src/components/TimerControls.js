@@ -1,10 +1,12 @@
 import Button from 'react-bootstrap/Button';
 
-function TimerControls() {
+function TimerControls(props) {
+
+
     return (
       <div className="TimerControls" >
-        <Button style={{marginRight: "1rem"}}>Start</Button>
-        <Button style={{marginLeft: "1rem"}}>Restart</Button>
+        <Button onClick={props.togglePause} style={{marginRight: "1rem"}}>{props.isPaused ? 'Play':'Pause'}</Button>
+        <Button onClick={props.restartTimer} style={{marginLeft: "1rem"}}>Restart</Button>
       </div>
     );
   }
