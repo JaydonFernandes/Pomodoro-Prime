@@ -4,23 +4,12 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
 function TimerOptions(props) {
-  const TimerTypes = {
-    pomodoro: 'pomodoro',
-    shortBreak: 'shortBreak',
-    longBreak: 'longBreak'
-  }
-
-  const [radioValue, setRadioValue] = useState(props.TimerTypes.pomodoro)
 
   const radios = [
       { name: 'Pomodoro', value: props.TimerTypes.pomodoro },
       { name: 'Short Break', value: props.TimerTypes.shortBreak },
       { name: 'Long Break', value: props.TimerTypes.longBreak },
     ];
-
-  useEffect( ()=>{
-    props.updateTimerType(radioValue);
-  },[radioValue])
 
   return (
     <div className="TimerOptions" >
@@ -32,8 +21,12 @@ function TimerOptions(props) {
                   variant="secondary"
                   name="radio"
                   value={radio.value}
-                  checked={radioValue === radio.value}
-                  onChange={(e) => setRadioValue(e.currentTarget.value)}
+                  checked={
+                    props.timerType === radio.value
+                  }
+                  onChange={
+                    (e) => props.updateTimerType(e.currentTarget.value)
+                  }
               >
                   {radio.name}
               </ToggleButton>

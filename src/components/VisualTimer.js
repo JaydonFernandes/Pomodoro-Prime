@@ -9,7 +9,7 @@ function VisualTimer(props) {
 
     return (
         <div className="VisualTimer" style={{margin:"1rem", fontSize: "1000%"}}>
-            {minutes}:{zeroPad(seconds, 2)}
+            {minutes}:<span>{zeroPad(seconds, 2)}</span>
         </div>
     );
   }
