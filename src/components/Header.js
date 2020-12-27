@@ -1,6 +1,6 @@
 import SettingsModal from './SettingsModal'
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
@@ -10,13 +10,57 @@ function Header(props) {
 
   const [modalShow, setModalShow] = useState(false);
 
+  const [updatedPomodoroTime, setUpdatedPomodoroTime] = useState(props.pomodoroTime);
+  const [updatedShortBreakTime, setUpdatedShortBreakTime] = useState(props.shortBreakTime);
+  const [updatedLongBreakTime, setUpdatedLongBreakTime] = useState(props.longBreakTime);
+
 
   //TODO 
   //write code so time is added when modal closes
   const onModalClose = function(){
     console.log("Modal Complete...");
-    setModalShow(false);
+    // console.log(oldPomo);
+    console.log("updatedPomodoroTime: "+ updatedPomodoroTime)
+    console.log("updatedShortBreakTime: "+ updatedShortBreakTime)
+    console.log("updatedLongBreakTime: "+ updatedLongBreakTime)
+
+    var isFormValid = true;
+    console.log(isFormValid)
+
+    if ( (updatedPomodoroTime) && (updatedPomodoroTime >= 1)){
+      props.setPomodoroTime(updatedPomodoroTime)
+      
+    }else{
+      isFormValid = false;
+      setUpdatedPomodoroTime(props.pomodoroTime)
+    }
+
+    console.log(isFormValid)
+
+    if ( (updatedShortBreakTime) && (updatedShortBreakTime >= 1)){
+      props.setShortBreakTime(updatedShortBreakTime)
+      
+    }else{
+      isFormValid = false;
+      setUpdatedShortBreakTime(props.shortBreakTime)
+    }
+
+    if ( (updatedLongBreakTime) && (updatedLongBreakTime >= 1)){
+      props.setLongBreakTime(updatedLongBreakTime)
+      
+    }else{
+      isFormValid = false;
+      setUpdatedLongBreakTime(props.longBreakTime)
+    }
+
+    console.log(isFormValid)
+    if ( isFormValid ){
+      setModalShow(false);
+    }
+    
   }
+
+  
 
     return (
       <div>
@@ -27,6 +71,15 @@ function Header(props) {
           </Col>        
         </Row>
         <SettingsModal
+          setUpdatedPomodoroTime = {setUpdatedPomodoroTime}
+          setUpdatedShortBreakTime = {setUpdatedShortBreakTime}
+          setUpdatedLongBreakTime = {setUpdatedLongBreakTime}
+
+          updatedPomodoroTime = {updatedPomodoroTime}
+          updatedShortBreakTime = {updatedShortBreakTime}
+          updatedLongBreakTime = {updatedLongBreakTime}
+
+
           timesettings={props}
           show={modalShow}
           onHide={onModalClose}

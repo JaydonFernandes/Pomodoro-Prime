@@ -7,7 +7,6 @@ import Col from 'react-bootstrap/Col';
 
 function SettingsModal(props) {
 
-
     return (
     <div className="SettingsModal" >
         <Modal
@@ -33,22 +32,28 @@ function SettingsModal(props) {
                 <Col>
                     <h6>Pomodoro</h6>
                     <input className="form-control" id="example-number-input" type="number" 
-                        onChange={(e)=>{ props.timesettings.setPomodoroTime(e.target.value) }} 
-                        value={props.timesettings.pomodoroTime} />
+                        min={1}
+                        onChange={(e)=>{ props.setUpdatedPomodoroTime(e.target.value) }} 
+                        onBlur={(e)=>{ (e.target.value && (e.target.value >= 1)) ? console.log("Good") : props.setUpdatedPomodoroTime(props.timesettings.pomodoroTime) }}
+                        value={props.updatedPomodoroTime} />
                 </Col>
 
                 <Col>
                     <h6>Short Break</h6>
                     <input className="form-control" id="example-number-input" type="number" 
-                        onChange={(e)=>{ props.timesettings.setShortBreakTime(e.target.value) }} 
-                        value={props.timesettings.shortBreakTime} />
+                        min={1}
+                        onChange={(e)=>{ props.setUpdatedShortBreakTime(e.target.value) }}
+                        onBlur={(e)=>{ (e.target.value && (e.target.value >= 1)) ? console.log("Good") : props.setUpdatedShortBreakTime(props.timesettings.shortBreakTime) }} 
+                        value={props.updatedShortBreakTime} />
                 </Col>
 
                 <Col>
                     <h6>Long Break</h6>
                     <input className="form-control" id="example-number-input" type="number" 
-                        onChange={(e)=>{ props.timesettings.setLongBreakTime(e.target.value) }} 
-                        value={props.timesettings.longBreakTime} />
+                        min={1}
+                        onChange={(e)=>{ props.setUpdatedLongBreakTime(e.target.value) }} 
+                        onBlur={(e)=>{ (e.target.value && (e.target.value >= 1)) ? console.log("Good") : props.setUpdatedLongBreakTime(props.timesettings.longBreakTime) }}
+                        value={props.updatedLongBreakTime} />
                 </Col>
             </Row>
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import Card from 'react-bootstrap/Card';
 import TimerControls from './TimerControls';
@@ -11,6 +11,10 @@ function TimerCard(props) {
     const [isPaused, setIsPaused] = useState(true);
     const [needToResetTimer, setNeedToResetTimer] = useState(false);
     const [timerType, setTimerType] = useState('pomodoro');
+
+    const prevPomodoroTime = usePrevious(props.pomodoroTime);
+    const prevShortBreakTime = usePrevious(props.shortBreakTime);
+    const prevLongBreakTime = usePrevious(props.longBreakTime);
 
     const TimerTypes = {
       pomodoro: 'pomodoro',
@@ -39,33 +43,37 @@ function TimerCard(props) {
       setIsPaused(true);
     }
 
-    // switch(timerType) {
-    //   case 'pomodoro':
-    //     setTimerTime(props.pomodoroTime)
-    //     break;
-    //   case 'shortBreak':
-    //     setTimerTime(props.shortBreakTime)
-    //     break;
-    //   case 'longBreak':
-    //     setTimerTime(props.longBreakTime)
-    //     break;
-    // }
+    function usePrevious(value) {
+      const ref = useRef();
+      useEffect(() => {
+        ref.current = value;
+      });
+      return ref.current;
+    }
 
     useEffect( ()=>{
-      clearTimeout(timer);
-      switch(timerType) {
-        case 'pomodoro':
-          setTimerTime(props.pomodoroTime * 60)
-          break;
-        case 'shortBreak':
-          setTimerTime(props.shortBreakTime * 60)
-          break;
-        case 'longBreak':
-          setTimerTime(props.longBreakTime * 60)
-          break;
+      
+      if(timerType === 'pomodoro'){
+        clearTimeout(timer);
+        setTimerTime(timerTime + ((props.pomodoroTime - prevPomodoroTime)* 60))
       }
+    },[props.pomodoroTime])
 
-    },[props.pomodoroTime, props.shortBreakTime, props.longBreakTime])
+    useEffect( ()=>{
+      
+      if(timerType === 'shortBreak'){
+        clearTimeout(timer);
+        setTimerTime(timerTime + ((props.shortBreakTime - prevShortBreakTime)* 60))
+      }
+    },[props.shortBreakTime])
+
+    useEffect( ()=>{
+      
+      if(timerType === 'longBreak'){
+        clearTimeout(timer);
+        setTimerTime(timerTime + ((props.longBreakTime - prevLongBreakTime)* 60))
+      }
+    },[props.longBreakTime])
 
     useEffect( ()=>{
       setTimerTime(TimerLengths[timerType])
