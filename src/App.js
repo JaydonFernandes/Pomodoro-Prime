@@ -14,7 +14,7 @@ function App() {
   const [longBreakTime, setLongBreakTime] = useState(15);
 
   return (
-    <div className="App" >
+    <div className="App" style={{ maxWidth: '40rem', marginLeft: "auto", marginRight: "auto"  }}>
       <div style={{ maxWidth: '40rem', marginLeft: "auto", marginRight: "auto"  }}>
         <Header pomodoroTime={pomodoroTime} setPomodoroTime={setPomodoroTime} 
           shortBreakTime={shortBreakTime} setShortBreakTime={setShortBreakTime} 

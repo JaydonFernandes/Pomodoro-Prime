@@ -8,7 +8,7 @@ function VisualTimer(props) {
     var seconds = timeInSeconds - (minutes*60);
 
     return (
-        <div className="VisualTimer" style={{margin:"1rem", fontSize: "700%"}}>
+        <div className="VisualTimer" style={{margin:"1rem", fontSize: "500%"}}>
             {minutes}:<span>{zeroPad(seconds, 2)}</span>
         </div>
     );
